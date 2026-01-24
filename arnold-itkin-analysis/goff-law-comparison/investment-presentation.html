@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goff Law - Digital Market Dominance Initiative</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #1a1a2e;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            padding: 60px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Slide Backgrounds */
+        .slide-title {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .slide-problem {
+            background: linear-gradient(135deg, #2d132c 0%, #801336 100%);
+        }
+
+        .slide-opportunity {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+        }
+
+        .slide-solution {
+            background: linear-gradient(135deg, #1e5128 0%, #4e9f3d 100%);
+        }
+
+        .slide-budget {
+            background: linear-gradient(135deg, #1a1a2e 0%, #4a0e4e 100%);
+        }
+
+        .slide-roi {
+            background: linear-gradient(135deg, #0d7377 0%, #14ffec 100%);
+        }
+
+        .slide-timeline {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+
+        .slide-team {
+            background: linear-gradient(135deg, #434343 0%, #000000 100%);
+        }
+
+        .slide-ask {
+            background: linear-gradient(135deg, #c31432 0%, #240b36 100%);
+        }
+
+        /* Title Slide */
+        .title-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e94560;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+        }
+
+        .main-title {
+            font-size: 72px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #e94560, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 32px;
+            color: #a0a0a0;
+            margin-bottom: 60px;
+        }
+
+        .investment-badge {
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 36px;
+            font-weight: 700;
+            box-shadow: 0 10px 40px rgba(233, 69, 96, 0.4);
+        }
+
+        /* Slide Headers */
+        .slide-header {
+            margin-bottom: 40px;
+        }
+
+        .slide-number {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .slide-title-text {
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .slide-subtitle {
+            font-size: 24px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Content Styles */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            flex: 1;
+        }
+
+        .content-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            flex: 1;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-card.highlight {
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            border: none;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-value.large {
+            font-size: 72px;
+        }
+
+        .stat-description {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 10px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 20px;
+        }
+
+        .comparison-table th {
+            text-align: left;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .comparison-table .them {
+            color: #ff6b6b;
+        }
+
+        .comparison-table .us {
+            color: #4ade80;
+        }
+
+        .comparison-table .gap {
+            color: #fbbf24;
+        }
+
+        /* Budget Breakdown */
+        .budget-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .budget-bar {
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .budget-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .budget-amount {
+            margin-left: auto;
+            font-weight: 700;
+        }
+
+        /* Colors for budget bars */
+        .bar-media { background: linear-gradient(90deg, #e94560, #ff6b6b); width: 70%; }
+        .bar-content { background: linear-gradient(90deg, #4ade80, #22c55e); width: 50%; }
+        .bar-digital { background: linear-gradient(90deg, #3b82f6, #60a5fa); width: 40%; }
+        .bar-office { background: linear-gradient(90deg, #f59e0b, #fbbf24); width: 40%; }
+        .bar-talent { background: linear-gradient(90deg, #8b5cf6, #a78bfa); width: 35%; }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-50%);
+        }
+
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e94560;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+        }
+
+        .timeline-year {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .timeline-spend {
+            font-size: 24px;
+            color: #4ade80;
+            font-weight: 600;
+        }
+
+        .timeline-desc {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            max-width: 200px;
+            margin: 10px auto 0;
+        }
+
+        /* ROI Section */
+        .roi-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            gap: 60px;
+        }
+
+        .roi-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 8px solid #14ffec;
+            box-shadow: 0 0 60px rgba(20, 255, 236, 0.3);
+        }
+
+        .roi-number {
+            font-size: 80px;
+            font-weight: 800;
+            color: #14ffec;
+        }
+
+        .roi-label {
+            font-size: 24px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .roi-details {
+            text-align: left;
+        }
+
+        .roi-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            font-size: 22px;
+        }
+
+        .roi-row span:last-child {
+            font-weight: 700;
+            color: #14ffec;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: #e94560;
+            border-color: #e94560;
+            transform: scale(1.1);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            font-size: 16px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* List styles */
+        .feature-list {
+            list-style: none;
+            font-size: 22px;
+        }
+
+        .feature-list li {
+            padding: 15px 0;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .decoration-1 {
+            width: 400px;
+            height: 400px;
+            background: #e94560;
+            top: -100px;
+            right: -100px;
+        }
+
+        .decoration-2 {
+            width: 300px;
+            height: 300px;
+            background: #4ade80;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        /* Pie chart for budget */
+        .pie-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .pie-chart {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #e94560 0deg 126deg,
+                #4ade80 126deg 198deg,
+                #3b82f6 198deg 252deg,
+                #f59e0b 252deg 306deg,
+                #8b5cf6 306deg 349deg,
+                #6b7280 349deg 360deg
+            );
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .pie-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pie-center-value {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .pie-center-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .pie-legend {
+            font-size: 18px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            margin-right: 15px;
+        }
+
+        .legend-text {
+            flex: 1;
+        }
+
+        .legend-value {
+            font-weight: 700;
+            margin-left: 20px;
+        }
+
+        /* Ask slide */
+        .ask-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            text-align: center;
+        }
+
+        .ask-amount {
+            font-size: 120px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .ask-subtitle {
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .ask-returns {
+            display: flex;
+            gap: 80px;
+        }
+
+        .ask-return-item {
+            text-align: center;
+        }
+
+        .ask-return-value {
+            font-size: 56px;
+            font-weight: 800;
+            color: #4ade80;
+        }
+
+        .ask-return-label {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* What You Get slide */
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            flex: 1;
+            align-content: center;
+        }
+
+        .deliverable-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .deliverable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .deliverable-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .deliverable-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: #4ade80;
+            margin-bottom: 5px;
+        }
+
+        .deliverable-label {
+            font-size: 16px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Animated gradient background */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Risk section */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            flex: 1;
+            align-content: center;
+        }
+
+        .risk-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid;
+        }
+
+        .risk-card.mitigated {
+            border-color: #4ade80;
+        }
+
+        .risk-card.monitored {
+            border-color: #fbbf24;
+        }
+
+        .risk-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .risk-mitigation {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Thank you slide */
+        .thank-you {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            text-align: center;
+        }
+
+        .thank-you h1 {
+            font-size: 80px;
+            background: linear-gradient(90deg, #e94560, #ff6b6b, #feca57, #4ade80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            font-size: 24px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .contact-info a {
+            color: #e94560;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide slide-title active">
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        <div class="title-content">
+            <div class="logo">GOFF LAW, PLLC</div>
+            <h1 class="main-title">Digital Market<br>Dominance Initiative</h1>
+            <p class="subtitle">Strategic Investment Proposal for Partnership Review</p>
+            <div class="investment-badge">$10,000,000 | 36 Months</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: The Problem -->
+    <div class="slide slide-problem">
+        <div class="slide-header">
+            <div class="slide-number">01 / THE CHALLENGE</div>
+            <h2 class="slide-title-text">We're Being Outgunned</h2>
+            <p class="slide-subtitle">Arnold & Itkin's digital presence dwarfs ours</p>
+        </div>
+        <div class="content-grid">
+            <div>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Metric</th>
+                        <th>Us</th>
+                        <th>Them</th>
+                    </tr>
+                    <tr>
+                        <td>Website Pages</td>
+                        <td class="us">90</td>
+                        <td class="them">602</td>
+                    </tr>
+                    <tr>
+                        <td>Blog Posts</td>
+                        <td class="us">34</td>
+                        <td class="them">312</td>
+                    </tr>
+                    <tr>
+                        <td>Location Pages</td>
+                        <td class="us">11</td>
+                        <td class="them">52</td>
+                    </tr>
+                    <tr>
+                        <td>Office Locations</td>
+                        <td class="us">3</td>
+                        <td class="them">6</td>
+                    </tr>
+                    <tr>
+                        <td>Trust Signal</td>
+                        <td class="us">$5M+</td>
+                        <td class="them">$20B</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <div class="stat-card highlight" style="margin-bottom: 20px;">
+                    <div class="stat-label">Content Gap</div>
+                    <div class="stat-value">512</div>
+                    <div class="stat-description">More pages than us</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Monthly Traffic Gap</div>
+                    <div class="stat-value">20x</div>
+                    <div class="stat-description">Their organic visitors vs ours</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: The Opportunity -->
+    <div class="slide slide-opportunity">
+        <div class="slide-header">
+            <div class="slide-number">02 / THE OPPORTUNITY</div>
+            <h2 class="slide-title-text">DFW Is Winnable</h2>
+            <p class="slide-subtitle">We don't need to beat them everywhere—just here</p>
+        </div>
+        <div class="content-grid">
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="stat-card">
+                    <div class="stat-label">DFW Population</div>
+                    <div class="stat-value">7.5M</div>
+                    <div class="stat-description">4th largest metro in the US</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Annual Auto Accidents</div>
+                    <div class="stat-value">85,000+</div>
+                    <div class="stat-description">In DFW alone</div>
+                </div>
+                <div class="stat-card highlight">
+                    <div class="stat-label">Market Size</div>
+                    <div class="stat-value">$2.5B</div>
+                    <div class="stat-description">Annual PI settlements in DFW</div>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="font-size: 32px; margin-bottom: 30px;">Our Advantages</h3>
+                <ul class="feature-list">
+                    <li>Born and raised in Dallas—local credibility</li>
+                    <li>Galaxy Gas litigation leadership</li>
+                    <li>Modern practice areas (AI, rideshare, e-scooters)</li>
+                    <li>Personal touch vs. corporate feel</li>
+                    <li>Agility—we can move faster</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: The Solution -->
+    <div class="slide slide-solution">
+        <div class="slide-header">
+            <div class="slide-number">03 / THE SOLUTION</div>
+            <h2 class="slide-title-text">Total Digital Dominance</h2>
+            <p class="slide-subtitle">A comprehensive 36-month investment strategy</p>
+        </div>
+        <div class="content-grid-3">
+            <div class="stat-card" style="text-align: center;">
+                <div style="font-size: 60px; margin-bottom: 15px;">🌐</div>
+                <div class="stat-value" style="font-size: 36px;">650+</div>
+                <div class="stat-label" style="margin-top: 10px;">Website Pages</div>
+                <div class="stat-description">Matching then exceeding competition</div>
+            </div>
+            <div class="stat-card" style="text-align: center;">
+                <div style="font-size: 60px; margin-bottom: 15px;">📍</div>
+                <div class="stat-value" style="font-size: 36px;">6</div>
+                <div class="stat-label" style="margin-top: 10px;">Texas Offices</div>
+                <div class="stat-description">Dallas, Fort Worth, Houston, Austin, San Antonio</div>
+            </div>
+            <div class="stat-card" style="text-align: center;">
+                <div style="font-size: 60px; margin-bottom: 15px;">📝</div>
+                <div class="stat-value" style="font-size: 36px;">450</div>
+                <div class="stat-label" style="margin-top: 10px;">Blog Posts</div>
+                <div class="stat-description">Thought leadership content</div>
+            </div>
+            <div class="stat-card" style="text-align: center;">
+                <div style="font-size: 60px; margin-bottom: 15px;">🎬</div>
+                <div class="stat-value" style="font-size: 36px;">55+</div>
+                <div class="stat-label" style="margin-top: 10px;">Video Testimonials</div>
+                <div class="stat-description">Real clients, real stories</div>
+            </div>
+            <div class="stat-card" style="text-align: center;">
+                <div style="font-size: 60px; margin-bottom: 15px;">🎙️</div>
+                <div class="stat-value" style="font-size: 36px;">130</div>
+                <div class="stat-label" style="margin-top: 10px;">Podcast Episodes</div>
+                <div class="stat-description">"Texas Injury Law" show</div>
+            </div>
+            <div class="stat-card" style="text-align: center;">
+                <div style="font-size: 60px; margin-bottom: 15px;">👥</div>
+                <div class="stat-value" style="font-size: 36px;">11</div>
+                <div class="stat-label" style="margin-top: 10px;">New Team Members</div>
+                <div class="stat-description">Marketing & intake specialists</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Budget Breakdown -->
+    <div class="slide slide-budget">
+        <div class="slide-header">
+            <div class="slide-number">04 / INVESTMENT BREAKDOWN</div>
+            <h2 class="slide-title-text">Where the Money Goes</h2>
+            <p class="slide-subtitle">Strategic allocation across 5 categories</p>
+        </div>
+        <div class="pie-container">
+            <div class="pie-chart">
+                <div class="pie-center">
+                    <div class="pie-center-value">$10M</div>
+                    <div class="pie-center-label">TOTAL</div>
+                </div>
+            </div>
+            <div class="pie-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e94560;"></div>
+                    <span class="legend-text">Paid Media & Advertising</span>
+                    <span class="legend-value">$3.5M (35%)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4ade80;"></div>
+                    <span class="legend-text">Content Production</span>
+                    <span class="legend-value">$2.0M (20%)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3b82f6;"></div>
+                    <span class="legend-text">Digital Infrastructure</span>
+                    <span class="legend-value">$1.5M (15%)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f59e0b;"></div>
+                    <span class="legend-text">Office Expansion</span>
+                    <span class="legend-value">$1.5M (15%)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #8b5cf6;"></div>
+                    <span class="legend-text">Talent Acquisition</span>
+                    <span class="legend-value">$1.2M (12%)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #6b7280;"></div>
+                    <span class="legend-text">Contingency</span>
+                    <span class="legend-value">$0.3M (3%)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Timeline -->
+    <div class="slide slide-timeline">
+        <div class="slide-header">
+            <div class="slide-number">05 / TIMELINE</div>
+            <h2 class="slide-title-text">36-Month Roadmap</h2>
+            <p class="slide-subtitle">Phased investment with quarterly review gates</p>
+        </div>
+        <div class="timeline" style="margin-top: 60px;">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">Year 1</div>
+                <div class="timeline-spend">$3.9M</div>
+                <div class="timeline-desc">Foundation: Website rebuild, Fort Worth & Houston offices, team hired</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">Year 2</div>
+                <div class="timeline-spend">$3.3M</div>
+                <div class="timeline-desc">Acceleration: Austin & SA offices, podcast launch, 500+ pages</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">Year 3</div>
+                <div class="timeline-spend">$2.8M</div>
+                <div class="timeline-desc">Dominance: Organic exceeds paid, top 3 rankings, self-sustaining</div>
+            </div>
+        </div>
+        <div class="content-grid" style="margin-top: 40px;">
+            <div class="stat-card">
+                <div class="stat-label">Year 1 Revenue Target</div>
+                <div class="stat-value" style="font-size: 42px;">$30.75M</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Year 2 Revenue Target</div>
+                <div class="stat-value" style="font-size: 42px;">$57.9M</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Year 3 Revenue Target</div>
+                <div class="stat-value" style="font-size: 42px;">$96.5M</div>
+            </div>
+            <div class="stat-card highlight">
+                <div class="stat-label">3-Year Total</div>
+                <div class="stat-value" style="font-size: 42px;">$185M</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: ROI -->
+    <div class="slide slide-roi">
+        <div class="slide-header">
+            <div class="slide-number">06 / RETURN ON INVESTMENT</div>
+            <h2 class="slide-title-text" style="color: #0d7377;">The Numbers That Matter</h2>
+        </div>
+        <div class="roi-container">
+            <div class="roi-circle">
+                <div class="roi-number">5.3x</div>
+                <div class="roi-label">ROI Multiple</div>
+            </div>
+            <div class="roi-details">
+                <div class="roi-row">
+                    <span>Total Investment</span>
+                    <span>$10,000,000</span>
+                </div>
+                <div class="roi-row">
+                    <span>3-Year Gross Settlements</span>
+                    <span>$185,150,000</span>
+                </div>
+                <div class="roi-row">
+                    <span>Firm Fees (33%)</span>
+                    <span>$61,050,000</span>
+                </div>
+                <div class="roi-row">
+                    <span>Net After Costs</span>
+                    <span>$53,000,000</span>
+                </div>
+                <div class="roi-row" style="border-bottom: none; font-size: 28px;">
+                    <span>Net Return</span>
+                    <span style="color: #4ade80; font-size: 32px;">+$43,000,000</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Risk Management -->
+    <div class="slide slide-team">
+        <div class="slide-header">
+            <div class="slide-number">07 / RISK MANAGEMENT</div>
+            <h2 class="slide-title-text">Built-In Safeguards</h2>
+            <p class="slide-subtitle">Quarterly review gates protect the investment</p>
+        </div>
+        <div class="risk-grid">
+            <div class="risk-card mitigated">
+                <div class="risk-title">Algorithm Changes</div>
+                <div class="risk-mitigation">✓ Diversified traffic sources—no single channel exceeds 40%</div>
+            </div>
+            <div class="risk-card mitigated">
+                <div class="risk-title">Rising Ad Costs</div>
+                <div class="risk-mitigation">✓ Shift budget to organic as rankings improve over time</div>
+            </div>
+            <div class="risk-card mitigated">
+                <div class="risk-title">Increased Competition</div>
+                <div class="risk-mitigation">✓ First-mover advantage + brand building creates moat</div>
+            </div>
+            <div class="risk-card mitigated">
+                <div class="risk-title">Execution Risk</div>
+                <div class="risk-mitigation">✓ 5 quarterly gates—can pause if KPIs miss by 30%+</div>
+            </div>
+        </div>
+        <div style="margin-top: 40px; text-align: center;">
+            <div class="stat-card" style="display: inline-block; padding: 30px 60px;">
+                <div class="stat-label">Review Gates</div>
+                <div style="display: flex; gap: 30px; margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700;">Gate 1</div>
+                        <div style="color: rgba(255,255,255,0.6);">Month 6</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700;">Gate 2</div>
+                        <div style="color: rgba(255,255,255,0.6);">Month 12</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700;">Gate 3</div>
+                        <div style="color: rgba(255,255,255,0.6);">Month 18</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700;">Gate 4</div>
+                        <div style="color: rgba(255,255,255,0.6);">Month 24</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700;">Gate 5</div>
+                        <div style="color: rgba(255,255,255,0.6);">Month 30</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: The Ask -->
+    <div class="slide slide-ask">
+        <div class="ask-container">
+            <h2 style="font-size: 36px; margin-bottom: 20px; color: rgba(255,255,255,0.8);">THE ASK</h2>
+            <div class="ask-amount">$10,000,000</div>
+            <div class="ask-subtitle">36-Month Digital Market Dominance Initiative</div>
+            <div class="ask-returns">
+                <div class="ask-return-item">
+                    <div class="ask-return-value">$53M</div>
+                    <div class="ask-return-label">Net Return</div>
+                </div>
+                <div class="ask-return-item">
+                    <div class="ask-return-value">5.3x</div>
+                    <div class="ask-return-label">ROI Multiple</div>
+                </div>
+                <div class="ask-return-item">
+                    <div class="ask-return-value">#1</div>
+                    <div class="ask-return-label">DFW Position</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Thank You -->
+    <div class="slide slide-title">
+        <div class="animated-bg"></div>
+        <div class="thank-you">
+            <h1>Let's Dominate DFW</h1>
+            <p class="contact-info">
+                Questions? Let's discuss.<br><br>
+                <strong>Goff Law, PLLC</strong><br>
+                972-928-0085 | jim@gofflawdfw.com
+            </p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <button class="nav-btn" onclick="prevSlide()">←</button>
+        <button class="nav-btn" onclick="nextSlide()">→</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">10</span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+
+        document.getElementById('total').textContent = total;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + total) % total;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current').textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Click to advance
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-btn')) {
+                const rect = document.body.getBoundingClientRect();
+                if (e.clientX > rect.width / 2) {
+                    nextSlide();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
